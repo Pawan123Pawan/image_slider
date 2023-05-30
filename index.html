@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .slide_container{
+            position: relative;
+            width: 100%;
+        }
+        .image{
+            height: 70vh;
+            width: 100%;
+        }
+        .arrow{
+            position: absolute;
+            background: rgb(221, 129, 129);
+            padding: .55rem;
+            /* border-radius: 20%; */
+            cursor: pointer;
+            top: 30vh;
+            font-weight: bold;
+            box-shadow:
+             inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgba(255, 255, 255, 0.281),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+        }
+        .Next{
+            right: .50rem;
+        }
+        .Pre{
+            left: .50rem;
+        }
+        .caption{
+            position: absolute;
+            background: rgba(68, 62, 62, 0.575);
+            color: lemonchiffon;
+            padding: 1rem;
+            bottom: 0rem;
+            width: 97.6%;
+            font-weight: bolder;
+            font-family: serif;
+            text-align: center;
+            font-size: 2rem;
+            justify-content: center;
+            
+        }
+        .slide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide_container">
+        <div class="slide">
+            <img src="img1.jpg" alt="" class="image">
+            <div class="caption">Text Caption &copy; 1</div>
+        </div>
+        <div class="slide">
+            <img src="img2.jpg" alt="" class="image">
+            <div class="caption">Text Caption &copy; 2</div>
+        </div>
+        <div class="slide">
+            <img src="img3.jpg" alt="" class="image">
+            <div class="caption">Text Caption &copy; 3</div>
+        </div>
+        <div class="slide">
+            <img src="img4.jpg" alt="" class="image">
+            <div class="caption">Text Caption &copy; 4</div>
+        </div>
+        <div class="slide">
+            <img src="img5.jpg" alt="" class="image">
+            <div class="caption">Text Caption &copy; 5</div>
+        </div>
+        <span class="arrow Next"onclick="controller(1)">&#10095;</span>
+        <span class="arrow Pre"onclick="controller(-1)" >&#10094;</span>
+    </div>
+
+    <script>
+        let img=4
+        function controller(x){
+            img=img+x;
+            slideshow(img)
+        }
+        slideshow(img)
+       function slideshow(z){                                                                                                                    
+           let slides=document.getElementsByClassName("slide")
+           if(z==slides.length){
+               img=0
+               z=0
+           }                                                                                          if(z<0){
+               img=slides.length-1;                                                                                                               
+               z=slides.length-1
+           }
+           for(let y of slides){
+               y.style.display="none"
+           }
+            slides[z].style.display="block"
+       }
+    
+    </script>
+</body>
+</html>
